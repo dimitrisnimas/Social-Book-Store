@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Requests List</title>
+    <link rel="stylesheet" type="text/css" href="/css/user/showRequests.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Go Back Button -->
+        <button onclick="window.location.href='/user/dashboard';">Go Back</button>
+        
+        <!-- Requests List -->
+        <div th:if="${requests != null and !requests.empty}">
+            <div th:each="request : ${requests}" class="request-block">
+                <!-- Display request details here -->
+                <div class="request-content">
+                    <p><strong>Book Title:</strong> <span th:text="${request.title}"></span></p>
+                    <p><strong>Book Description:</strong> <span th:text="${request.description}"></span></p>
+                </div>
+                <!-- See Request Button -->
+                <a th:href="@{/user/see-requests(bookid=${request.idbook}, userprofile_id=${userprofile_id})}"
+                   th:text="'See Request (' + ${request.getRequestingUsers().size()} + ')'" class="btn btn-info btn-sm"></a>
+            </div>
+        </div>
+        
+        <!-- Message if no requests are available -->
+        <div th:if="${requests == null or requests.empty}">
+            <p>No requests available at the moment.</p>
+        </div>
+    </div>
+</body>
+</html>

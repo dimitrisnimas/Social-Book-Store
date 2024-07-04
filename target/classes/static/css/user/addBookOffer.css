@@ -1,0 +1,87 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form elements styling */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Categories and Authors styling */
+.scroll-container {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.scroll-container div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.scroll-container input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Button styling */
+.btn, .new-author-link {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none; /* Ensure no underline */
+    display: inline-block; /* Ensure it behaves like a button */
+}
+
+.btn-info, .new-author-link {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+}
+
+.btn-info:hover, .new-author-link:hover {
+    background-color: #138496;
+    color: white; /* Ensure text color stays white */
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Text center for buttons */
+.text-center {
+    text-align: center;
+}

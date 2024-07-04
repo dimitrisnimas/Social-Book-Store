@@ -1,0 +1,92 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Container styling */
+.container {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Styling for each request block */
+.request-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+.request-block:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Request content styling */
+.request-content {
+    max-width: 80%;
+}
+
+/* General paragraph styling inside request blocks */
+.request-block p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Button and link styling */
+button, .btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Go Back button specific styling */
+button:first-of-type {
+    background-color: #6c757d; /* Different color for the Go Back button */
+}
+
+button:first-of-type:hover {
+    background-color: #545b62;
+}
+
+/* Additional button styling for links */
+.btn {
+    display: inline-block;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.btn.btn-info.btn-sm {
+    font-size: 14px;
+    padding: 8px 16px;
+    background-color: #17a2b8;
+}
+
+.btn.btn-info.btn-sm:hover {
+    background-color: #117a8b;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/user/createBookRequest.css">
+    <title>Create Request</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Request</h1>
+        
+        <form th:action="@{/user/save-book-request}" method="post">
+            
+            <input type="hidden" name="userprofile_id" th:value="${userProfile.userprofile_id}" />
+            <input type="hidden" name="bookid" th:value="${book.idbook}" />
+            
+            <div class="form-group">
+                <label for="bookTitle">Book Title:</label>
+                <input type="text" id="bookTitle" th:value="${book.title}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="requestMessage">Enter request message:</label>
+                <textarea id="requestMessage" name="requestMessage" required></textarea>
+            </div>
+            
+            <div class="form-group buttons">
+                <button type="submit" class="btn btn-primary">Create request</button>
+                <a th:href="@{/user/search-book}" class="btn btn-secondary">Go back</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

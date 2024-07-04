@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Book List</title>
+</head>
+<body>
+<div class="container">
+    <h3>My Book offers List</h3>
+    <hr>
+    <a th:href="@{/user/dashboard}" class="btn btn-primary btn-sm mb-3">Go Back</a>
+    <a th:href="@{/user/addBookOffer(userprofile_id=${userprofile_id})}" class="btn btn-primary btn-sm mb-3">Add Book Offer</a>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book Title</th>
+                <th>Book Author</th>
+                <th>Book Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}"></td>
+                <td>
+                    <span th:each="author, iterStat : ${book.bookAuthors}"
+                          th:text="${author.name} + (iterStat.hasNext ? '  ' : '')"></span>
+                </td>
+                
+                <td>
+                	<span th:each="category, iterStat : ${book.bookCategories}"
+                          th:text="${category.name} + (iterStat.hasNext ? ' ' : '')"></span>
+                </td>
+                
+                <td>
+                    <a th:href="@{/user/myOffersBookDetails(idbook=${book.idbook}, userprofile_id=${userprofile_id})}" class="btn btn-info btn-sm">See Book</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

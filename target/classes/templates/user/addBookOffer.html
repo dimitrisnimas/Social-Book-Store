@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/user/addBookOffer.css">
+    
+    <title>Add Offer - Insert Books</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h3 class="text-center">Book Offer Creation</h3>
+        <hr>
+
+        <form action="#" th:action="@{/user/BookSave(userprofile_id=${userprofile_id})}" th:object="${newBook}" method="POST">
+            
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{idbook}" />
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" th:field="*{title}" class="form-control" placeholder="Insert Title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Summary</label>
+                <input type="text" id="description" th:field="*{description}" class="form-control" placeholder="Insert a Summary of the book" required>
+            </div>
+
+            <!-- Categories with limited visibility and a scroll bar -->
+            <fieldset class="form-group">
+                <legend>Categories of the Book:</legend>
+                <div class="scroll-container">
+                    <div th:each="category : ${newBook.bookCategories}">
+                        <input type="checkbox" id="category-[[${category.categoryid}]]" name="bookCategories" th:value="${category.categoryid}" th:text="${category.name}">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Authors with limited visibility and a scroll bar -->
+            <fieldset class="form-group">
+                <legend>Known Authors:
+                    
+                    <a th:href="@{/user/authorCreate(userprofile_id=${userprofile_id})}" class="new-author-link">New Author?</a>
+                
+                </legend>
+                <div class="scroll-container">
+                    <div th:each="author : ${newBook.bookAuthors}">
+                        <input type="checkbox" id="author-[[${author.idauthor}]]" name="bookAuthors" th:value="${author.idauthor}" th:text="${author.name}">
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-info">Save Offer</button>
+            </div>
+        </form>
+
+        <hr>
+        <div class="text-center">
+            <a th:href="@{/user/my-offers-list(userprofile_id=${userprofile_id})}" class="btn btn-secondary">Back to My Offers</a>
+        </div>
+    </div>
+</body>
+
+</html>

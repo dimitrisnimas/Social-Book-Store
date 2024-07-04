@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/user/editProfile.css">
+    
+    <title>Edit Profile!</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit User Profile!</h1>
+        <form id="profileForm" th:action="@{/user/save-profile(userprofile_id=${userProfileForm.userprofile_id})}" th:object="${userProfileForm}" method="post">
+            
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{bookOffers}" />
+            <input type="hidden" th:field="*{requestedBooks}" />
+            
+            <div class="form-group">
+                <label for="fullname">Full Name (30 characters max):</label>
+                <input type="text" id="fullname" th:field="*{fullname}" name="fullname" maxlength="30" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address (30 characters max):</label>
+                <input type="text" id="address" th:field="*{address}" name="address" maxlength="30">
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" th:field="*{age}" name="age" min="10" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (10 digits):</label>
+                <input type="tel" id="phone" th:field="*{phonenum}" name="phone" pattern="[0-9]{10}">
+            </div>
+
+            <!-- Categories with limited visibility and a scroll bar -->
+            <fieldset>
+                <legend>Categories of Books:</legend>
+                <div class="scroll-container">
+				    <label th:each="category : ${categories}">
+				        <input type="checkbox" name="favoriteCategories" th:value="${category.categoryid}" th:text="${category.name}" th:checked="${#lists.contains(userProfileForm.favoriteCategories, category)}" />
+				    </label>
+				</div>
+            </fieldset>
+
+            <!-- Authors with limited visibility and a scroll bar -->
+            <fieldset>
+                <legend>Favorite Authors:</legend>
+                <div class="scroll-container">
+			        <label th:each="author : ${authors}">
+			            <input type="checkbox" name="favoriteAuthors" th:value="${author.idauthor}" th:text="${author.name}" th:checked="${#lists.contains(userProfileForm.favoriteAuthors, author)}" />
+			        </label>
+			    </div>
+            </fieldset>
+
+            <div class="buttons">
+                <button type="submit">Update profile!</button>
+                <a th:href="@{/user/dashboard}" class="button">Never mind</a>
+            </div>
+        </form>
+    </div>
+</body>

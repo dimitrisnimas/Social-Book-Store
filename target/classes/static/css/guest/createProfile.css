@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    width: 90%; 
+    max-width: 600px; 
+    padding: 20px; 
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+h1 {
+    text-align: center; 
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: #333;
+    font-weight: bold;
+}
+
+label {
+    display: flex; 
+    align-items: center; /* Aligns checkbox and label text */
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"] {
+    padding: 10px 15px; /* Horizontal padding for inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 30px); /* Adjusted width to account for padding */
+    margin-bottom: 10px; /* Consistent margin between input fields */
+}
+
+input[type="checkbox"] {
+    margin-right: 10px; /* Ensures space between checkbox and label text */
+}
+
+.scroll-container {
+    max-height: 120px; /* Limit the height to about 6 checkboxes */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    padding: 10px; /* Consistent padding within the scrollable area */
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button[type="button"] {
+    background-color: #95a5a6;
+}
+
+button[type="button"]:hover {
+    background-color: #7f8c8d;
+}
+
+
+.button {
+    padding: 10px 20px; /* Same padding as your buttons */
+    border: none; /* No border for a flat design */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #3498db; /* Primary button color */
+    color: white; /* Text color for contrast */
+    text-decoration: none; /* Remove underline from link */
+    cursor: pointer; /* Make it look clickable */
+    transition: background-color 0.3s; /* Smooth color transition on hover */
+}
+
+.button:hover {
+    background-color: #2980b9; /* Darker shade on hover, like your buttons */
+}

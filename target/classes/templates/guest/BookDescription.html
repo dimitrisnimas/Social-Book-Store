@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Books</title>
+</head>
+
+<body>
+<div class="container">
+    
+		<h2>More details for the book</h2>
+		<br> <br> <hr> <br> <br>
+		
+        <div class="form-group">
+           <H3><b><label>Title</label></H3></b>
+            <p th:text="${book.title}"></p>
+		<div class="form-group">
+		    <h3><b><label>Book Author</label></b></h3>
+		    <div th:each="bookAuthor : ${book.bookAuthors}">
+		        <p th:text="${bookAuthor.name}"></p>
+			</div>
+		</div>
+        <div class="form-group">
+           <H3><b> <label>Book Category</label> </H3></b>
+            <div th:each="category : ${book.bookCategories}">
+		        <p th:text="${category.name}"></p>
+			</div>
+        </div>
+        
+        <div class="form-group">
+            <H3><b><label>Summary</label></H3></b>
+            <p th:text="${book.description}"></p>
+        </div>
+
+		
+		<hr>
+		<a th:href="@{/guest/dashboard}">Back to Homepage List</a>
+		
+</div>
+
+<script>
+function alertProfile() {
+    alert("You must create a profile first to access this function.");
+}
+</script>
+</body>
+</html>

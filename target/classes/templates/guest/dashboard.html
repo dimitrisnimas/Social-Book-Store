@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+			<!-- GUEST DASHBOARD -->
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+    <!-- External CSS reference -->
+    <link rel="stylesheet" type="text/css" href="css/guest/dashboard.css"> 
+    
+    <title>User Dashboard</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 text-center">
+            
+            <h2>Welcome to Guest Dashboard</h2>
+            
+            <h4>Logged as: <span sec:authentication="name"></span></h4>
+            
+            <h4>Has role: <span sec:authentication="authorities"></span></h4>
+            <span th:utext="${successMessage}"></span>
+        </div>
+        <div class="col-12 col-md-4 text-right">
+            <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">Home</a>
+            <a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3">Logout</a>
+        </div>
+    </div>
+    <hr>
+    <div class="button-group text-center">
+        <a th:href="@{/guest/create-profile}" class="btn btn-secondary btn-sm mb-3">Create Profile</a>
+        <button onclick="alertProfile()" class="btn btn-secondary btn-sm mb-3">Show Requests</button>
+        <button onclick="alertProfile()" class="btn btn-secondary btn-sm mb-3">Show Recommendations</button>
+        <button onclick="alertProfile()" class="btn btn-secondary btn-sm mb-3">My Book offers list</button>
+        <a th:href="@{/guest/search-book}" class="btn btn-secondary btn-sm mb-3">Search Book</a>
+    </div>
+</div>
+
+<script>
+function alertProfile() {
+    alert("You must create a profile first to access this function.");
+}
+</script>
+</body>
+</html>

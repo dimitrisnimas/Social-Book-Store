@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Book List</title>
+</head>
+<body>
+<div class="container">
+	<hr>
+	<a th:href="@{/user/dashboard}" class="btn btn-primary btn-sm mb-3">Go Back</a>
+    <hr>
+    <h3>Book List With Favorite Categories</h3>
+        
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book Title</th>
+                <th>Book Author</th>
+                <th>Book Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${booksFormCategories}">
+                <td th:text="${book.title}"></td>
+                <td>
+                    <span th:each="author, iterStat : ${book.bookAuthors}"
+                          th:text="${author.name} + (iterStat.hasNext ? ' ' : '')"></span>
+                </td>
+                
+                <td>
+                	<span th:each="category, iterStat : ${book.bookCategories}"
+                          th:text="${category.name} + (iterStat.hasNext ? ' ' : '')"></span>
+                </td>
+                <td>
+                    <a th:href="@{/user/seeBook(idbook=${book.idbook})}" class="btn btn-info btn-sm">See Book</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Book List With Favorite Authors</h3>
+        <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book Title</th>
+                <th>Book Author</th>
+                <th>Book Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${booksAuthors}">
+                <td th:text="${book.title}"></td>
+                <td>
+                    <span th:each="author, iterStat : ${book.bookAuthors}"
+                          th:text="${author.name} + (iterStat.hasNext ? ' ' : '')"></span>
+                </td>
+                
+				<td>
+                	<span th:each="category, iterStat : ${book.bookCategories}"
+                          th:text="${category.name} + (iterStat.hasNext ? ' ' : '')"></span>
+                </td>
+                
+                <td>
+                    <a th:href="@{/user/seeBook(idbook=${book.idbook})}" class="btn btn-info btn-sm">See Book</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

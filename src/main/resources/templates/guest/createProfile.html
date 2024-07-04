@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/guest/createProfile.css">
+    
+    <title>Create Profile!</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Create User Profile!</h1>
+        <form id="profileForm" th:action="@{/guest/save-profile}" th:object="${userProfileFormData}" method="post">
+            <div class="form-group">
+                <label for="fullname">Full Name (30 characters max):</label>
+                <input type="text" id="fullname" th:field="*{fullname}" name="fullname" maxlength="30" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address (30 characters max):</label>
+                <input type="text" id="address" th:field="*{address}" name="address" maxlength="30">
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" th:field="*{age}" name="age" min="10" max="100">
+            </div>
+            
+            <div class="form-group">
+			    <label for="phonenum">Phone Number (10 digits):</label>
+			    <input type="text" id="phonenum" th:field="*{phonenum}" pattern="[0-9]{10}" required>
+			</div>
+
+            <!-- Categories with limited visibility and a scroll bar -->
+            <fieldset>
+                <legend>Categories of Books:</legend>
+                <div class="scroll-container">
+				    <label th:each="category : ${userProfileFormData.favoriteCategories}">
+				        <input type="checkbox" name="favoriteCategories" th:value="${category.categoryid}" th:text="${category.name}">
+				    </label>
+				</div>
+            </fieldset>
+
+            <!-- Authors with limited visibility and a scroll bar -->
+            <fieldset>
+                <legend>Favorite Authors:</legend>
+                <div class="scroll-container">
+			        <label th:each="author : ${userProfileFormData.favoriteAuthors}">
+			            <input type="checkbox" name="favoriteAuthors" th:value="${author.idauthor}" th:text="${author.name}">
+			        </label>
+			    </div>
+            </fieldset>
+
+            <div class="buttons">
+                <button type="submit">Create user profile!</button>
+                <a th:href="@{/guest/dashboard}" class="button">Never mind</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

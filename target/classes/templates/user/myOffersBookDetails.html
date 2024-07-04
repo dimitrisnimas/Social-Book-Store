@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Books</title>
+</head>
+
+<body>
+<div class="container">
+    
+		<h2>More details for the book</h2>
+		<br> <br> <hr> <br> <br>
+		
+        <div class="form-group">
+           <H3><b><label>Title</label></H3></b>
+            <p th:text="${book.title}"></p>
+        </div>
+		<div class="form-group">
+		    <h3><b><label>Book Author</label></b></h3>
+		    <div th:each="bookAuthor : ${bookAuthors}">
+		        <p th:text="${bookAuthor.name}"></p>
+		</div>
+		</div>
+        <div class="form-group">
+           <H3><b> <label>Book Category</label> </H3></b>
+            <p>
+            	<span th:each="category, iterStat : ${book.bookCategories}"
+                      th:text="${category.name} + (iterStat.hasNext ? ' ' : '')"></span>
+            </p>
+        </div>
+        
+        <div class="form-group">
+            <H3><b><label>Summary</label></H3></b>
+            <p th:text="${book.description}"></p>
+        </div>
+
+		
+		<hr>
+		<a th:href="@{/user/my-offers-list(userprofile_id=${userprofile_id})}">Back to my Book offers List</a>
+		
+</div>
+</body>
+</html>

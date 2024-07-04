@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users List</title>
+    <link rel="stylesheet" type="text/css" href="/css/user/seeRequests.css">
+</head>
+<body>
+    <div class="container">
+    
+        <!-- Go Back Button and Title -->
+        <div class="header">
+            <a th:href="@{/user/show-requests(userprofile_id=${userprofile_id})}" class="btn">Go Back</a>
+            <h2 th:text="'Users that want the book : ' + ${bookTitle}"></h2>
+        </div>
+        
+        <!-- Users List -->
+        <div th:if="${users != null and !users.empty}">
+            <div th:each="user : ${users}" class="user-block">
+                <!-- Display user details here -->
+                <div class="user-info">
+                    <p><span class="label">Username:</span> <span th:text="${user.username}"></span></p>
+                    <p><span class="label">Fullname:</span> <span th:text="${user.fullname}"></span></p>
+                    <p><span class="label">Age:</span> <span th:text="${user.age}"></span></p>
+                    <p><span class="label">Address:</span> <span th:text="${user.address}"></span></p>
+                    <p><span class="label">Phone number:</span> <span th:text="${user.phonenumber}"></span></p>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a th:href="@{/user/approve-request(userprofile_id=${userprofile_id})}" class="approve-button">&#10004;</a>
+                    <a th:href="@{/user/reject-request(userprofile_id=${userprofile_id})}" class="reject-button">&#10006;</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Message if no users are available -->
+        <div th:if="${users == null or users.empty}" class="no-users-message">
+            <p>No users available at the moment.</p>
+        </div>
+    </div>
+</body>
+</html>

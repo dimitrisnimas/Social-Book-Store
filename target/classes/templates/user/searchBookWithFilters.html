@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Book Search</title>
+</head>
+<body>
+<div class="container">
+    <h3>Book List with filters</h3>
+    <hr>
+    <a th:href="@{/user/dashboard}" class="btn btn-primary btn-sm mb-3">Go Back</a>
+    
+    <!-- Search Form -->
+    <form id="bookSearchForm" th:action="@{/user/searchBooksfilters}" th:object="${searchObject}" class="form-inline mb-3" method="get">
+        <div class="form-group mr-2">
+            <input type="text" id="searchTermTitle" th:field="*{title}" class="form-control" placeholder="Search Title" required>
+            <input type="text" id="searchTermAuth" th:field="*{author}" class="form-control" placeholder="Type the Author" required>
+        </div>
+        <div class="form-group mr-2">
+            <label for="searchStrategy" class="sr-only">Search Strategy</label>
+            <select id="searchStrategy" th:field="*{typeOfSearch}" class="form-control" required>
+                <option value="exact">Search Exact</option>
+                <option value="approximate">Search Approximate</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    
+</div>
+</body>
+</html>
